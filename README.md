@@ -92,3 +92,17 @@ Server:
  Version:      17.03.1-ce
  API version:  1.27 (minimum version 1.12)
 ```
+
+## Install Git
+
+You will need access to Git for this workshop.
+
+* Red Hat / Fedora : `dnf install git`
+* Ubuntu : `apt-get install git`
+* OS X: Use [Homebrew](https://brew.sh/) or follow the instructions on the main Git website.
+
+## Install Telepresence
+
+If we have time I'll show you a cool mechanism to bridge a Kubernetes cluster to your local laptop so that you can do stuff like view volumes on Kubernetes and run a local debugger against a Kubernetesified service.
+
+[Please read and follow the installation instructions for Telepresence](http://www.telepresence.io/tutorials/kubernetes.html).
