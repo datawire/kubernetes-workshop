@@ -2,20 +2,16 @@
 
 * [Introduction](README.md)
 
-## Bootcamp Exercises
+## Docker 101
 
-Exercises that pair with Datawire's Kubernetes Bootcamp
-
-* [Before you Begin](bootcamp/README.md)
-
-### Docker 101
-
-Exercises to learn essential Docker functionality and commands.
-
-* [Running Containers](bootcamp/containers.md)
-* [Building Docker Images](bootcamp/images.md)
-* [Sharing Docker Images](bootcamp/sharing-images.md)
+* [Before you Begin](docker_101/README.md)
+* [Running Containers](docker_101/containers.md)
+* [Building Docker Images](docker_101/images.md)
+* [Sharing Docker Images](docker_101/shipping.md)
 
 ### Kubernetes 101
 
-Exercises to learn essential Kubernetes functionality and commands.
+* [Before you Begin](kubernetes_101/README.md)
+* [Running Containers on Kubernetes](kubernetes_101/containers.md)
+* [First Application](kubernetes_101/build_first_service.md)
+* [Another Application](kubernetes_101/build_another_service.md)
