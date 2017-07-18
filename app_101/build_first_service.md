@@ -84,16 +84,16 @@ Resource Quotas
 
 ### Deployment
 
-Once the Namespace is created and Kubernetes reports `Status: Active` we can deploy the application. If you're using Minikube from the previous tutorial then ensure your current terminal session is configured to use the Minikube Docker daemon by running the below command and then following the instructions it gives:
+Once the Namespace is created and Kubernetes reports `Status: Active` we can deploy the application. If you're using Minikube from the previous tutorial then ensure your current terminal session is configured to use the Minikube Docker daemon by running the below command:
 
 ```console
-$ minikube docker-env
+$ eval $(minikube docker-env)
 ```
 
 Next run `docker build` and wait for it to complete:
 
 ```console
-$ docker build -t datawire/hello-kubernetes:1.0 .
+$ docker build . -t datawire/hello-kubernetes:1.0 .
 ```
 
 Next we're going to create a Deployment manifest which is what Kubernetes uses to control scheduling and running your containerized service in a Pod. Create a new file `kubernetes/deployment.yaml`
