@@ -7,7 +7,7 @@ Kubernetes is all about running containers. In this section you will learn how t
 On your computer run the following command using the `kubectl` command line tool. In particular, you're going to start a new shell inside a container running Alpine Linux just like you did in the earlier Docker tutorial [Running a Container](../containers/containers.md).
 
 ```console
-$ kubectl run my-shell --rm -i --tty --image alpine -- /bin/sh
+$ kubectl run my-shell --rm -it --image alpine -- /bin/sh
 If you don't see a command prompt, try pressing enter.
 
 / # df
@@ -19,7 +19,7 @@ If you don't see a command prompt, try pressing enter.
 In another terminal run a nearly identical command
 
 ```console
-$ kubectl run my-other-shell --rm -i --tty --image alpine -- /bin/sh` command again.
+$ kubectl run my-other-shell --rm -it --image alpine -- /bin/sh` command again.
 If you don't see a command prompt, try pressing enter.
 
 / # df
@@ -48,13 +48,13 @@ $
 You can run different operating systems (do not forget that it takes a while to pull the image the first time from a remote Docker Registry). 
 
 ```console
-$ kubectl run my-os --rm -i --tty --image ubuntu -- /bin/bash
+$ kubectl run my-os --rm -it --image ubuntu -- /bin/bash
 ```
 
 Set some environment variables:
 
 ```console
-$ kubectl run vars --rm -i --tty --env FOOBAR=BAZBOT,DATAWIRE=ROCKS --image alpine -- /bin/sh
+$ kubectl run vars --rm -it --env FOOBAR=BAZBOT,DATAWIRE=ROCKS --image alpine -- /bin/sh
 If you don't see a command prompt, try pressing enter.
 
 / # echo $DATAWIRE
