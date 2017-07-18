@@ -19,7 +19,7 @@ If you don't see a command prompt, try pressing enter.
 In another terminal run a nearly identical command
 
 ```console
-$ kubectl run my-other-shell --rm -it --image alpine -- /bin/sh` command again.
+$ kubectl run my-other-shell --rm -it --image alpine -- /bin/sh
 If you don't see a command prompt, try pressing enter.
 
 / # df
