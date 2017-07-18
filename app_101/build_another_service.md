@@ -113,19 +113,19 @@ $ python -m py_compile hello/hello.py
 
 In the new `/quote` URL implementation you just wrote the method call `urllib.request.urlopen("http://qotm.tutorial")` points at the Kubernetes Service of the Quote service. This is the beauty of Kubernetes, it uses an internal DNS server to handle service discovery for your applications. You can refer to the previously deployed QOTM service by attempting to connect to a named host. In Kubernetes discovering services is as simple as referring to them by `${SERVICE_NAME}.${NAMESPACE}` because there is a built-in DNS service in Kubernetes.
 
-If you're using Minikube from the previous tutorial then ensure your current terminal session is configured to use the Minikube Docker daemon by running the below command and then following the instructions it gives:
+Time to deploy then test out the new functionality. If you are using Minikube from the previous tutorial then ensure your current terminal session is configured to use the Minikube Docker daemon by running the below command and then following the instructions it gives:
 
 ```console
 $ minikube docker-env
 ```
 
-Next rebuild the Docker image for the Hello Kubernetes service.
+Next rebuild the Docker image for the modified Hello Kubernetes service.
 
 ```console
 $ docker build -t datawire/hello-kubernetes:1.1 .
 ```
 
-Next open the Hello Kubernetes deployment manifest and find the line `image: datawire/hello-kubernetes:1.0`. Update the line to refer to be `image: datawire/hello-kubernetes:1.1`.
+Afterwards open the Hello Kubernetes deployment manifest and find the line `image: datawire/hello-kubernetes:1.0`. Update the line to refer to be `image: datawire/hello-kubernetes:1.1`.
 
 Finally save the file and then run `kubectl apply`:
 
@@ -138,7 +138,7 @@ resourcequota "quota" configured
 service "hello-kubernetes" configured
 ```
 
-To test out your Hello Kubernetes service communicating with the Quote service run the below command for a few seconds:
+To test out your Hello Kubernetes service that communicates with the Quote service run the below command for a few seconds:
 exposes
 
 ```console
@@ -180,7 +180,7 @@ You should see some JSON coming back from each instance of your running Hello Ku
 }
 ```
 
-The code in your Hello Kubernetes application is invoking the HTTP endpoint on the QOTM service to get a random quote from the QOTM service!
+The code in your Hello Kubernetes application is invoking the HTTP endpoint on the Quote service to get a random quote.
 
 ## Takeaways
 
