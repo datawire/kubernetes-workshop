@@ -22,11 +22,11 @@ Once the new shell starts, type those four commands again:
 
 ```console
 $ docker run --interactive --tty alpine /bin/sh
-alpine# df
-alpine# ps xa
-alpine# ifconfig
-alpine# hostname
-alpine# exit
+/ # df
+/ # ps xa
+/ # ifconfig
+/ # hostname
+/ # exit
 $
 ```
 
@@ -61,24 +61,43 @@ You'll notice this time it starts up just as fast as a normal process would.
 
 ### Each container has its own filesystem
 
-Start a container and write some data to a file:
+Start a container and write some data to a file.
+
+> `-it` is the shorthand for `--interactive --tty`:
 
 ```console
-$ docker run -i -t alpine /bin/sh
-# / echo hello > /tmp/hello.txt
-# / cat /tmp/hello.txt
-# / exit
+$ docker run -it alpine /bin/sh
+/ # echo hello > /tmp/hello.txt
+/ # cat /tmp/hello.txt
+hello
+/ # exit
 ```
 
-Now on your main terminal check if `/tmp/hello.txt` exists.
-Then start a new container, and check if `/tmp/hello.txt` exists.
+Now on your main terminal check if `/tmp/hello.txt` exists with the below command... it should not:
+
+```console
+$ cat /tmp/hello.txt
+
+cat: /tmp/hello.txt: No such file or directory
+```
+
+Then start a new container, and check if `/tmp/hello.txt` exists... it also should not exist:
+
+```console
+$ docker run -it alpine /bin/sh
+/ # cat /tmp/hello.txt
+
+cat: can't open '/tmp/hello.txt': No such file or directory
+```
+
+As you have now witnessed containers have unique isolate filesystems. The host is not modified by what occurs in the container and multiple runs of the same Docker Image do not result in a shared filesystem.
 
 ## On your own
 
 You can pass command line arguments to the process the container runs:
 
 ```console
-$ docker run -i -t alpine echo hello world
+$ docker run -it alpine echo hello world
 ```
 
 Set environment variables:
