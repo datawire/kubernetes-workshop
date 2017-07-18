@@ -10,6 +10,6 @@ You need to have the below tools installed:
 
 ## Exercises
 
-1. [Running Containers](docker_101/containers.md)
-2. [Building Docker Images](docker_101/images.md)
-3. [Sharing Docker Images](docker_101/shipping.md)
+1. [Running Containers](containers.md)
+2. [Building Docker Images](images.md)
+3. [Sharing Docker Images](shipping.md)
