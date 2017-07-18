@@ -10,10 +10,10 @@ On your computer run the following command using the `kubectl` command line tool
 $ kubectl run my-shell --rm -i --tty --image alpine -- /bin/sh
 If you don't see a command prompt, try pressing enter.
 
-# / df
-# / ps xa
-# / ifconfig
-# / hostname
+/ # df
+/ # ps xa
+/ # ifconfig
+/ # hostname
 ```
 
 In another terminal run a nearly identical command
@@ -22,10 +22,10 @@ In another terminal run a nearly identical command
 $ kubectl run my-other-shell --rm -i --tty --image alpine -- /bin/sh` command again.
 If you don't see a command prompt, try pressing enter.
 
-# / df
-# / ps xa
-# / ifconfig
-# / hostname
+/ # df
+/ # ps xa
+/ # ifconfig
+/ # hostname
 ```
 
 Compare the output from the container in the first terminal to the output from the container in the second terminal and you will notice that inside the container you have:
@@ -38,7 +38,7 @@ Compare the output from the container in the first terminal to the output from t
 To exit the container you run the `exit` command:
 
 ```console
-# / exit
+/ # exit
 Session ended, resume using 'kubectl attach my-shell-ABC -c my-shell -i -t' command when the pod is running
 $
 ```
@@ -54,13 +54,12 @@ $ kubectl run my-os --rm -i --tty --image ubuntu -- /bin/bash
 Set some environment variables:
 
 ```console
-$ kubectl run vars --rm -i --tty --env FOOBAR=BAZBOT,DATAWIRE=ROCKS --image alpine -- /bin/bash
+$ kubectl run vars --rm -i --tty --env FOOBAR=BAZBOT,DATAWIRE=ROCKS --image alpine -- /bin/sh
+If you don't see a command prompt, try pressing enter.
 
-# / echo $DATAWIRE
+/ # echo $DATAWIRE
 ROCKS
 ```
-
-
 
 ## Takeaway
 
