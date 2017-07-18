@@ -18,7 +18,5 @@
 ## Application Development on Kubernetes
 
 * [Before you Begin](app_101/README.md)
-* [First Application](app_101/build_first_service.md)
-* [Another Application](app_101/build_another_service.md)
-
-
+* [First Service - Hello Kubernetes](app_101/build_first_service.md)
+* [Second Service - Quote of the Moment](app_101/build_another_service.md)
