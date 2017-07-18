@@ -93,7 +93,7 @@ $ eval $(minikube docker-env)
 Next run `docker build` and wait for it to complete:
 
 ```console
-$ docker build . -t datawire/hello-kubernetes:1.0 .
+$ docker build . -t datawire/hello-kubernetes:1.0
 ```
 
 Next we're going to create a Deployment manifest which is what Kubernetes uses to control scheduling and running your containerized service in a Pod. Create a new file `kubernetes/deployment.yaml`
