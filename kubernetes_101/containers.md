@@ -16,9 +16,19 @@ If you don't see a command prompt, try pressing enter.
 # / hostname
 ```
 
-In another terminal run command `kubectl run my-other-shell --rm -i --tty --image alpine -- /bin/sh` command again.
+In another terminal run a nearly identical command
 
-Compare the output from the container in the first terminal to the output from the container in the second terminal, and you'll notice that inside the container you have:
+```console
+$ kubectl run my-other-shell --rm -i --tty --image alpine -- /bin/sh` command again.
+If you don't see a command prompt, try pressing enter.
+
+# / df
+# / ps xa
+# / ifconfig
+# / hostname
+```
+
+Compare the output from the container in the first terminal to the output from the container in the second terminal and you will notice that inside the container you have:
 
 1. Different mounted filesystems.
 2. Different processes running (check the PIDs because the same process names will be present).
@@ -44,8 +54,13 @@ $ kubectl run my-os --rm -i --tty --image ubuntu -- /bin/bash
 Set some environment variables:
 
 ```console
-$ kubectl run vars --rm -i --tty --env FOOBAR=BAZBOT,DATAWIRE=ROCKS --image ubuntu -- /bin/bash
+$ kubectl run vars --rm -i --tty --env FOOBAR=BAZBOT,DATAWIRE=ROCKS --image alpine -- /bin/bash
+
+# / echo $DATAWIRE
+ROCKS
 ```
+
+
 
 ## Takeaway
 

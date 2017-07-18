@@ -254,6 +254,10 @@ In general, these files should all be stored in the same GitHub repository for t
 
 Group your Kubernetes manifests (e.g. `deployment.yaml`) with your service implementation. This makes it easy to deploy later on and keeps the project configuration local to the code so they stay in sync. It also creates a convention for other services to do the same thing and allows further tooling to be layered on top.
 
+### Self Exercises
+
+1. What if you want to modify the number of deployed replicas of Hello Kubernetes? In `deployment.yaml` update the `replicas` field to 1 and then run `kubectl apply -f kubernetes/deployment.yaml` and see what happens.
+
 ### Takeaways
 
 * `Namespace`s let you group Kubernetes configuration objects.

@@ -6,7 +6,7 @@ Microservice applications are composed of many cooperatively communicating servi
 
 The new service is the [Quote of The Moment Service](https://github.com/datawire/qotm) and the job of the service is to return a random, somewhat strange sounding unattributed quote when a client sends a request.
 
-On your computer clone the [`datawire/qotm`](https://github.com/datawire/qotm) Git repository:
+On your computer open a new Terminal and then clone the [`datawire/qotm`](https://github.com/datawire/qotm) Git repository:
 
 ```console
 $ git clone https://github.com/datawire/qotm.git
@@ -20,7 +20,7 @@ Checking connectivity... done.
 $ cd qotm
 ```
 
-The layout of the QOTM service should be familiar as it the same as `hello-kubernetes` with the [`Dockerfile`](https://github.com/datawire/qotm/Dockerfile) sitting in the project's root directory and a [`kubernetes/`](https://github.com/datawire/qotm/kubernetes)` directory with Kubernetes manifests.
+The layout of the Quote service should be familiar as it the same as `hello-kubernetes` with the [`Dockerfile`](https://github.com/datawire/qotm/Dockerfile) sitting in the project's root directory and a [`kubernetes/`](https://github.com/datawire/qotm/kubernetes)` directory with Kubernetes manifests.
 
 Display the `kubernetes/service.yaml` file in your console with the below command:
 
@@ -44,7 +44,7 @@ spec:
 
 The most important piece of information in the QOTM Kubernetes Service manifest is the `type: ClusterIP`. In the Hello Kubernetes tutorial you saw a `type: LoadBalancer` service which exposed an external IP address to access the Hello Kubernetes pods. Kubernetes has several several different types of Services and one of the most common is `ClusterIP`. The `ClusterIP` type creates a service that does not have an external IP address which means the service can only be accessed from inside of the cluster. The `ClusterIP` service type is extremely common for backend services which do not need to be accessed in any way except from other consumers in the same cluster. 
 
-To deploy the QOTM service run the familiar `kubectl apply` command on your computer:
+To deploy the Quote service run the familiar `kubectl apply` command on your computer:
 
 ```console
 $ kubectl apply -f kubernetes/
@@ -69,7 +69,45 @@ For the next few steps open another command line terminal then enter into the di
 cd hello-kubernetes
 ```
 
-Update the code to talk to the QOTM service. In an editor open the [`hello/hello.py`](https://github.com/datawire/hello-kubernetes/hello/hello.py) file and add the below Python method to the existing. (insert it between `app = Flask(__name__)` and `@app.route("/" methods=["GET"])`:
+Update the code to talk to the Quote service. In an editor open the [`hello/hello.py`](https://github.com/datawire/hello-kubernetes/hello/hello.py) and find this section of code:
+
+```python
+#@app.route("/quote", methods=["GET"])
+#def hello_with_quote():
+#    import urllib.request
+#    import json
+#
+#    res = urllib.request.urlopen("http://qotm.tutorial")
+#    data = res.read()
+#
+#    return jsonify(message="Hello from Kubernetes!",
+#                   quote=json.loads(data.decode('utf-8')),
+#                   hostname=os.getenv("HOSTNAME"),
+#                   time=datetime.datetime.now().isoformat())
+```
+
+Open the file in an editor and remove the comment (`#`) characters and save the updated file. The resulting code block should appear as below:
+
+```python
+@app.route("/quote", methods=["GET"])
+def hello_with_quote():
+    import urllib.request
+    import json
+
+    res = urllib.request.urlopen("http://qotm.tutorial")
+    data = res.read()
+
+    return jsonify(message="Hello from Kubernetes!",
+                   quote=json.loads(data.decode('utf-8')),
+                   hostname=os.getenv("HOSTNAME"),
+                   time=datetime.datetime.now().isoformat())
+```
+
+Run a quick sanity check to ensure the Python source code is syntactically valid. If the below command complains of an error then fix any issues it finds:
+
+```console
+$ python -m py_compile hello/hello.py
+```
 
 ## Communicating with the New Service
 
@@ -88,7 +126,13 @@ def hello_with_quote():
                    time=datetime.datetime.now().isoformat())
 ```
 
-The method call `urllib.request.urlopen("http://qotm.tutorial")` points at the Kubernetes Service of the QOTM service. This is the beauty of Kubernetes, it uses an internal DNS server to handle service discovery for your applications. You can refer to the previously deployed QOTM service by attempting to connect to a named host. In Kubernetes discovering services is as simple as referring to them by `${SERVICE_NAME}.${NAMESPACE}` because there is a built-in DNS service in Kubernetes.
+The method call `urllib.request.urlopen("http://qotm.tutorial")` points at the Kubernetes Service of the Quote service. This is the beauty of Kubernetes, it uses an internal DNS server to handle service discovery for your applications. You can refer to the previously deployed QOTM service by attempting to connect to a named host. In Kubernetes discovering services is as simple as referring to them by `${SERVICE_NAME}.${NAMESPACE}` because there is a built-in DNS service in Kubernetes.
+
+If you're using Minikube from the previous tutorial then ensure your current terminal session is configured to use the Minikube Docker daemon by running the below command and then following the instructions it gives:
+
+```console
+$ minikube docker-env
+```
 
 Next rebuild the Docker image for the Hello Kubernetes service.
 
@@ -109,9 +153,7 @@ resourcequota "quota" configured
 service "hello-kubernetes" configured
 ```
 
-The important thing to note about that `kubectl apply` is that 
-
-To test out your Hello Kubernetes service communicating with the QOTM service run the below command for a few seconds:
+To test out your Hello Kubernetes service communicating with the Quote service run the below command for a few seconds:
 exposes
 
 ```console

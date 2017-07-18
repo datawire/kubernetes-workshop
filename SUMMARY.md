@@ -15,10 +15,10 @@
 * [Minikube](kubernetes_101/minikube.md)
 * [Running Containers on Kubernetes](kubernetes_101/containers.md)
 
-## Kubernetes 102
+## Application Development on Kubernetes
 
-* [Before you Begin](kubernetes_102/README.md)
-* [First Application](kubernetes_102/build_first_service.md)
-* [Another Application](kubernetes_102/build_another_service.md)
+* [Before you Begin](app_101/README.md)
+* [First Application](app_101/build_first_service.md)
+* [Another Application](app_101/build_another_service.md)
 
 

@@ -1,6 +1,15 @@
 # Before you Begin
 
+In this section you will build a small microservices application on Kubernetes.
+
 ## Prerequisites
+
+For this section you need the below software to be installed:
+
+* Git
+* Kubectl
+* Minikube
+* Python 2 or 3
 
 ### Skills and Knowledge
 
