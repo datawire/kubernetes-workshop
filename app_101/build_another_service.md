@@ -111,22 +111,7 @@ $ python -m py_compile hello/hello.py
 
 ## Communicating with the New Service
 
-```python
-@app.route("/quote", methods=["GET"])
-def hello_with_quote():
-    import urllib.request
-    import json
-
-    res = urllib.request.urlopen("http://qotm.tutorial")
-    data = res.read()
-
-    return jsonify(message="Hello from Kubernetes!",
-                   quote=json.loads(data.decode('utf-8')),
-                   hostname=os.getenv("HOSTNAME"),
-                   time=datetime.datetime.now().isoformat())
-```
-
-The method call `urllib.request.urlopen("http://qotm.tutorial")` points at the Kubernetes Service of the Quote service. This is the beauty of Kubernetes, it uses an internal DNS server to handle service discovery for your applications. You can refer to the previously deployed QOTM service by attempting to connect to a named host. In Kubernetes discovering services is as simple as referring to them by `${SERVICE_NAME}.${NAMESPACE}` because there is a built-in DNS service in Kubernetes.
+In the new `/quote` URL implementation you just wrote the method call `urllib.request.urlopen("http://qotm.tutorial")` points at the Kubernetes Service of the Quote service. This is the beauty of Kubernetes, it uses an internal DNS server to handle service discovery for your applications. You can refer to the previously deployed QOTM service by attempting to connect to a named host. In Kubernetes discovering services is as simple as referring to them by `${SERVICE_NAME}.${NAMESPACE}` because there is a built-in DNS service in Kubernetes.
 
 If you're using Minikube from the previous tutorial then ensure your current terminal session is configured to use the Minikube Docker daemon by running the below command and then following the instructions it gives:
 
