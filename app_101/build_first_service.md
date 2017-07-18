@@ -224,7 +224,7 @@ You should see some JSON coming back from each instance of your running applicat
   "time": "2017-06-16T18:50:41.404431"
 }
 {
-  "hostname": "hello-kubernetes-3126827086-h66lc"",
+  "hostname": "hello-kubernetes-3126827086-h66lc",
   "message": "Hello from Kubernetes!",
   "time": "2017-06-16T18:50:44.110312"
 }
