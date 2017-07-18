@@ -6,34 +6,34 @@ Now that you've created an image, it's time to share it with other people.
 
 ### Uploading Docker Hub
 
-First, sign up for a [Docker Hub account](https://hub.docker.com/).
+First, sign up for a [Docker Hub account](https://hub.docker.com/) or if you want you can use a shared Docker Registry that exists just for this workshop:
 
 Then login to the registry:
 
-```console
-$ docker login
-```
-
-In the last section you tagged your image as `myhelloworld:1.0`.
-Most images in a registry come with a prefix, however, the name of the user or organization that created them.
-If you signed up as `katie123`, your images will be tagged as `katie123/<imagename>`.
-So let's rebuild your image with a new tag; don't forget to substitute your Docker Hub username for `katie123`.
+If you're going to use the shared registry then the username is `datawiretraining` and password is `training2017_`
 
 ```console
-$ docker build . -t katie123/myhelloworld:1.0
+$ docker login -u <USERNAME> -p <PASSWORD>
 ```
+
+In the last section you tagged your image as `myhelloworld:1.0`. Most images in a registry come with a prefix, however, the name of the user or organization that created them. If you signed up as `katie123`, your images will be tagged as `katie123/<imagename>`. Rebuild your image with a new tag; don't forget to substitute your Docker Hub username for `katie123`, if you're using the shared Docker Registry then that value is `datawiretraining`.
+
+```console
+$ docker build . -t katie123/myhelloworld:$USER
+```
+
 > You can also use the `docker tag` command to add a tag to an existing image.
 
 Now you can upload the image to the registry:
 
 ```console
-$ docker push katie123/myhelloworld:1.0
+$ docker push katie123/myhelloworld:$USER
 ```
 
 Next, to see that it actually worked, delete the image from your local cache:
 
 ```console
-$ docker rmi katie123/myhelloworld:1.0
+$ docker rmi katie123/myhelloworld:$USER
 ```
 
 It should no longer be listed in local list of images:
@@ -45,7 +45,7 @@ $ docker images | grep katie123
 The image should be retrieved from the registry when you run it:
 
 ```console
-$ docker run katie123/myhelloworld:1.0 Katie
+$ docker run katie123/myhelloworld:$USER Katie
 ```
 
 ## On your own
