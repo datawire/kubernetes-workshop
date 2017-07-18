@@ -9,10 +9,11 @@ On your computer run the following command using the `kubectl` command line tool
 ```console
 $ kubectl run my-shell --rm -i --tty --image alpine -- /bin/sh
 If you don't see a command prompt, try pressing enter.
-alpine# df
-alpine# ps xa
-alpine# ifconfig
-alpine# hostname
+
+# / df
+# / ps xa
+# / ifconfig
+# / hostname
 ```
 
 In another terminal run command `kubectl run my-other-shell --rm -i --tty --image alpine -- /bin/sh` command again.
@@ -27,7 +28,7 @@ Compare the output from the container in the first terminal to the output from t
 To exit the container you run the `exit` command:
 
 ```console
-alpine# exit
+# / exit
 Session ended, resume using 'kubectl attach my-shell-ABC -c my-shell -i -t' command when the pod is running
 $
 ```
