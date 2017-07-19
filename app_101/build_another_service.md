@@ -32,7 +32,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: qotm
-  namespace: tutorial
 spec:
   type: ClusterIP
   selector:
@@ -55,7 +54,7 @@ service "qotm" created
 Once you run that command Kubernetes will immediately work to fulfill the request. You can check the status of the Service with the following command:
 
 ```console
-$ kubectl get service/qotm --namespace tutorial
+$ kubectl get service/qotm
 
 NAME   CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 qotm   10.0.0.46    <none>        80:30997/TCP   2m
@@ -77,7 +76,7 @@ Update the code to talk to the Quote service. In an editor open the [`hello/hell
 #    import urllib.request
 #    import json
 #
-#    res = urllib.request.urlopen("http://qotm.tutorial")
+#    res = urllib.request.urlopen("http://qotm")
 #    data = res.read()
 #
 #    return jsonify(message="Hello from Kubernetes!",
@@ -94,7 +93,7 @@ def hello_with_quote():
     import urllib.request
     import json
 
-    res = urllib.request.urlopen("http://qotm.tutorial")
+    res = urllib.request.urlopen("http://qotm")
     data = res.read()
 
     return jsonify(message="Hello from Kubernetes!",
@@ -111,7 +110,7 @@ $ python -m py_compile hello/hello.py
 
 ## Communicating with the New Service
 
-In the new `/quote` URL implementation you just wrote the method call `urllib.request.urlopen("http://qotm.tutorial")` points at the Kubernetes Service of the Quote service. This is the beauty of Kubernetes, it uses an internal DNS server to handle service discovery for your applications. You can refer to the previously deployed QOTM service by attempting to connect to a named host. In Kubernetes discovering services is as simple as referring to them by `${SERVICE_NAME}.${NAMESPACE}` because there is a built-in DNS service in Kubernetes.
+In the new `/quote` URL implementation you just wrote the method call `urllib.request.urlopen("http://qotm")` points at the Kubernetes Service of the Quote service. This is the beauty of Kubernetes, it uses an internal DNS server to handle service discovery for your applications. You can refer to the previously deployed QOTM service by attempting to connect to a named host. In Kubernetes discovering services is as simple as referring to them by `${SERVICE_NAME}` because there is a built-in DNS service in Kubernetes. While not shown here, if you were isolating services via Kubernetes Namespace functionality the DNS name would be `${SERVICE_NAME}.${NAMESPACE}`.
 
 Time to deploy then test out the new functionality. If you are using Minikube from the previous tutorial then ensure your current terminal session is configured to use the Minikube Docker daemon by running the below command and then following the instructions it gives:
 
@@ -133,8 +132,6 @@ Finally save the file and then run `kubectl apply`:
 $ kubectl apply kubernetes/
 
 deployment "hello-kubernetes" configured
-namespace "tutorial" configured
-resourcequota "quota" configured
 service "hello-kubernetes" configured
 ```
 
