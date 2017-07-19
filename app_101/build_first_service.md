@@ -81,7 +81,7 @@ The output `deployment "hello-kubernetes" created`  indicates the configuration 
 You can inspect the status of the Deployment using the below `kubectl` command:
 
 ```console
-$ kubectl get deployment/hello-kubernetes --namespace=tutorial
+$ kubectl get deployment/hello-kubernetes
 
 NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 hello-kubernetes   3         3         3            3           5m
@@ -127,7 +127,7 @@ service "hello-kubernetes" created
 Once you run that command Kubernetes will immediately work to fulfill the request. You can check the status of the Service with the following command, however, an important thing to know is that on Minikube the `EXTERNAL-IP` field will always be `<pending>`:
 
 ```console
-$ kubectl get service/hello-kubernetes tutorial
+$ kubectl get service/hello-kubernetes
 
 NAME               CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 hello-kubernetes   10.0.0.162   <pending>     80:30997/TCP   2m
@@ -170,7 +170,7 @@ You should see some JSON coming back from each instance of your running applicat
 You can see that the `hostname` is changing which corresponds to the Pods running based on the earlier Deployment.
 
 ```console
-$ kubectl get pods --namespace=tutorial --selector='app=hello-kubernetes'
+$ kubectl get pods --selector='app=hello-kubernetes'
 
 NAME                                READY     STATUS    RESTARTS   AGE
 hello-kubernetes-3126827086-bxrzg   1/1       Running   0          54m
