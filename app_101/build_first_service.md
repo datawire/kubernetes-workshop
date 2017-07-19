@@ -40,7 +40,7 @@ Next we're going to create a Deployment manifest which is what Kubernetes uses t
 touch kubernetes/deployment.yaml
 ```
 
-Next open the file in an editor and type into the file the following YAML which specifies a Deployment `hello-kubernetes` in the `tutorial` namespace. A deployment is a way of telling the Kubernetes scheduler enough about the thing being Deployed so that it can schedule work on Kubernetes nodes, handle upgrades and scale the underlying Pods. The below deployment will result in three running single-container Pods which means three separate instances of `hello-kubernetes` will be running.
+Next open the file in an editor and type into the file the following YAML which specifies a Deployment `hello-kubernetes`. A deployment is a way of telling the Kubernetes scheduler enough about the thing being Deployed so that it can schedule work on Kubernetes nodes, handle upgrades and scale the underlying Pods. The below deployment will result in three running single-container Pods which means three separate instances of `hello-kubernetes` will be running.
 
 ```yaml
 ---
