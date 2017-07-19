@@ -22,10 +22,10 @@ The `hello-kubernetes` project is a typical looking microservice project layout 
 
 ### Deployment
 
-If you're using Minikube from the previous tutorial then ensure your current terminal session is configured to use the Minikube Docker daemon by running the below command and then following the instructions it gives:
+Once the Namespace is created and Kubernetes reports `Status: Active` we can deploy the application. If you're using Minikube from the previous tutorial then ensure your current terminal session is configured to use the Minikube Docker daemon by running the below command:
 
 ```console
-$ minikube docker-env
+$ eval $(minikube docker-env)
 ```
 
 Next run `docker build` and wait for it to complete:
@@ -156,7 +156,7 @@ You should see some JSON coming back from each instance of your running applicat
   "time": "2017-06-16T18:50:41.404431"
 }
 {
-  "hostname": "hello-kubernetes-3126827086-h66lc"",
+  "hostname": "hello-kubernetes-3126827086-h66lc",
   "message": "Hello from Kubernetes!",
   "time": "2017-06-16T18:50:44.110312"
 }
@@ -170,7 +170,7 @@ You should see some JSON coming back from each instance of your running applicat
 You can see that the `hostname` is changing which corresponds to the Pods running based on the earlier Deployment.
 
 ```console
-$ kubectl get pods --selector='app=hello-kubernetes'
+$ kubectl get pods --namespace=tutorial --selector='app=hello-kubernetes'
 
 NAME                                READY     STATUS    RESTARTS   AGE
 hello-kubernetes-3126827086-bxrzg   1/1       Running   0          54m

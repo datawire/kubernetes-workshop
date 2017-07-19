@@ -47,7 +47,7 @@ $ docker run alpine cat /etc/alpine-release
 
 ## Creating your own image
 
-You can create your own images, and almost you'll want to base your images on an existing one.
+You can create your own images, and almost always you'll want to base your images on an existing one.
 Most Linux distributions provide base images on the Docker Hub, so you can use Ubuntu or CentOS as base images.
 We'll be building on the `alpine` image because it produces smaller images, and also allows you to build new images faster.
 

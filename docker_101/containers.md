@@ -104,6 +104,7 @@ Set environment variables:
 
 ```console
 $ docker run -i -t -e HELLO=world alpine /bin/sh
+/ # echo $HELLO
 ```
 
 Mount a directory from your machine into the container:
