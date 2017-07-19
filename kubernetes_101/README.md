@@ -15,5 +15,6 @@ You will need Git, Docker, Kubectl installed to go through this section. Also yo
 
 ### Exercises
 
-* [Running Containers on Kubernetes](containers.md)
-* [Your own Personal Kubernetes Cluster](minikube.md)
+1. [Running Containers on Kubernetes](containers.md)
+2. [Your own Personal Kubernetes Cluster](minikube.md)
+4. [Done!](finish.md)

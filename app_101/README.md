@@ -24,5 +24,6 @@ You will need Git, Docker, Kubectl installed to go through this section. Also yo
 
 ### Exercises
 
-* [First Service - Hello Kubernetes](build_first_service.md)
-* [Second Service - Quote of the Moment](build_another_service.md)
+1. [First Service - Hello Kubernetes](build_first_service.md)
+2. [Second Service - Quote of the Moment](build_another_service.md)
+3. [Done!](finish.md)
