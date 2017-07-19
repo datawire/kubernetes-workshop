@@ -37,7 +37,7 @@ $ docker build -t datawire/hello-kubernetes:1.0 .
 Next we're going to create a Deployment manifest which is what Kubernetes uses to control scheduling and running your containerized service in a Pod. Create a new file `kubernetes/deployment.yaml`
 
 ```console
-touch kubernetes/deployment.yaml
+$ touch kubernetes/deployment.yaml
 ```
 
 Next open the file in an editor and type into the file the following YAML which specifies a Deployment `hello-kubernetes`. A deployment is a way of telling the Kubernetes scheduler enough about the thing being Deployed so that it can schedule work on Kubernetes nodes, handle upgrades and scale the underlying Pods. The below deployment will result in three running single-container Pods which means three separate instances of `hello-kubernetes` will be running.
@@ -96,7 +96,7 @@ Kubernetes has a resource called a "Service" which is a DNS resolvable endpoint 
 On your computer create a new file:
 
 ```console
-touch kubernetes/service.yaml
+$ touch kubernetes/service.yaml
 ```
 
 Next open the file in an editor and type into the file the following YAML which defines a LoadBalancer Service:
@@ -144,7 +144,7 @@ http://192.168.99.100:30997
 To test out your service you can combine this with something such as `curl`, for example try running the following command from a `bash` shell:
 
 ```console
-while sleep 2; do curl "$(minikube service hello-kubernetes --url)"; done
+$ while sleep 2; do curl "$(minikube service hello-kubernetes --url)"; done
 ```
 
 You should see some JSON coming back from each instance of your running application. For example, given this output:

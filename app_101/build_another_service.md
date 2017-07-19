@@ -25,7 +25,7 @@ The layout of the Quote service should be familiar as it the same as `hello-kube
 Display the `kubernetes/service.yaml` file in your console with the below command:
 
 ```console
-cat kubernetes/service.yaml
+$ cat kubernetes/service.yaml
 
 ---
 apiVersion: v1
@@ -65,7 +65,7 @@ Kubernetes did not assign an externally accessible address because of the `Clust
 For the next few steps open another command line terminal then enter into the directory where you cloned Hello Kubernetes.
 
 ```console
-cd hello-kubernetes
+$ cd hello-kubernetes
 ```
 
 Update the code to talk to the Quote service. In an editor open the [`hello/hello.py`](https://github.com/datawire/hello-kubernetes/hello/hello.py) and find this section of code:
@@ -139,7 +139,7 @@ To test out your Hello Kubernetes service that communicates with the Quote servi
 exposes
 
 ```console
-while sleep 2; do curl "$(minikube service hello-kubernetes --url)/quote"; done
+$ while sleep 2; do curl "$(minikube service hello-kubernetes --url)/quote"; done
 ```
 
 You should see some JSON coming back from each instance of your running Hello Kubernetes service. For example:
