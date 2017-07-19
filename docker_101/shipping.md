@@ -19,7 +19,7 @@ $ docker login -u <USERNAME> -p <PASSWORD>
 In the last section you tagged your image as `myhelloworld:1.0`. Most images in a registry come with a prefix, however, the name of the user or organization that created them. If you signed up as `katie123`, your images will be tagged as `katie123/<imagename>`. Rebuild your image with a new tag; don't forget to substitute your Docker Hub username for `katie123`, if you're using the shared Docker Registry then that value is `datawiretraining`.
 
 ```console
-$ docker build . -t katie123/myhelloworld:$USER
+$ docker build -t katie123/myhelloworld:$USER .
 ```
 
 > You can also use the `docker tag` command to add a tag to an existing image.

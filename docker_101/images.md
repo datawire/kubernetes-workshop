@@ -80,7 +80,7 @@ ENTRYPOINT ["/root/helloworld.py"]
 You can now build a new image, let's called it `myhelloworld`:
 
 ```console
-$ docker build . -t myhelloworld:1.0
+$ docker build -t myhelloworld:1.0 .
 ```
 
 You should be able to see the image when you list images:
