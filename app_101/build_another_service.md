@@ -139,7 +139,7 @@ To test out your Hello Kubernetes service that communicates with the Quote servi
 exposes
 
 ```console
-while sleep 2; do curl "$(minikube service hello-kubernetes --namespace=tutorial --url)/quote"; done
+while sleep 2; do curl "$(minikube service hello-kubernetes --url)/quote"; done
 ```
 
 You should see some JSON coming back from each instance of your running Hello Kubernetes service. For example:
